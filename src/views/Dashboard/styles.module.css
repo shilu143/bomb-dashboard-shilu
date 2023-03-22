@@ -1,0 +1,23 @@
+
+
+.outerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.summaryContainer {
+  padding: 2rem 2rem;
+  background-color: rgba(32, 37, 67, 0.5);
+  opacity: 1;
+  width: 1048px;
+  height: 289px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.summaryHeader {
+  color: white;
+  font-size: 1.5rem;
+}

@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap");
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: "Nunito", Courier, monospace;
+	color: #ffffff;
+}
+
+.outerContainer {
+	display: flex;
+	/* flex-wrap: wrap; */
+	justify-content: space-between;
+	margin: 1rem 0;
+}
+
+.DailyReturns,
+.YourStake,
+.Earned {
+	display: flex;
+	flex-direction: column;
+}
+
+.DailyReturnsVal {
+	font-weight: 600;
+	font-size: 22px;
+	line-height: 30px;
+}
+
+.YourStake span,
+.Earned span {
+	font-weight: 600;
+	font-size: 22px;
+	line-height: 30px;
+}
+
+.YourStake img,
+.Earned img {
+	width: 24px;
+	height: 24px;
+}
+
+.Buttons1 {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	width: 40%;
+}
+
+.Buttons2 {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 30%;
+}

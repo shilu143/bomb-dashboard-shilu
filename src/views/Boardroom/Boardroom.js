@@ -68,90 +68,90 @@ const Boardroom = () => {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
-          <Typography color="textPrimary" align="center" variant="h3" gutterBottom>
-            Boardroom
-          </Typography>
-          <Box mt={5}>
-            <Grid container justify="center" spacing={3}>
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-                <Card className={classes.gridItem}>
-                  <CardContent style={{ textAlign: 'center' }}>
-                    <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>Next Epoch</Typography>
-                    <ProgressCountdown base={moment().toDate()} hideBar={true} deadline={to} description="Next Epoch" />
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-                <Card className={classes.gridItem}>
-                  <CardContent align="center">
-                    <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>Current Epoch</Typography>
-                    <Typography>{Number(currentEpoch)}</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-                <Card className={classes.gridItem}>
-                  <CardContent align="center">
-                    <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>
-                      BOMB PEG <small>(TWAP)</small>
-                    </Typography>
-                    <Typography>{scalingFactor} BTC</Typography>
-                    <Typography>
-                      <small>per 10,000 BOMB</small>
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-                <Card className={classes.gridItem}>
-                  <CardContent align="center">
-                    <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>APR</Typography>
-                    <Typography>{boardroomAPR.toFixed(2)}%</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} md={2} lg={2}>
-                <Card className={classes.gridItem}>
-                  <CardContent align="center">
-                    <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>BSHARES Staked</Typography>
-                    <Typography>{getDisplayBalance(totalStaked)}</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
+      <Typography color="textPrimary" align="center" variant="h3" gutterBottom>
+        Boardroom
+      </Typography>
+      <Box mt={5}>
+        <Grid container justify="center" spacing={3}>
+          <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
+            <Card className={classes.gridItem}>
+              <CardContent style={{ textAlign: 'center' }}>
+                <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>Next Epoch</Typography>
+                <ProgressCountdown base={moment().toDate()} hideBar={true} deadline={to} description="Next Epoch" />
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
+            <Card className={classes.gridItem}>
+              <CardContent align="center">
+                <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>Current Epoch</Typography>
+                <Typography>{Number(currentEpoch)}</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
+            <Card className={classes.gridItem}>
+              <CardContent align="center">
+                <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>
+                  BOMB PEG <small>(TWAP)</small>
+                </Typography>
+                <Typography>{scalingFactor} BTC</Typography>
+                <Typography>
+                  <small>per 10,000 BOMB</small>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
+            <Card className={classes.gridItem}>
+              <CardContent align="center">
+                <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>APR</Typography>
+                <Typography>{boardroomAPR.toFixed(2)}%</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={2} lg={2}>
+            <Card className={classes.gridItem}>
+              <CardContent align="center">
+                <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>BSHARES Staked</Typography>
+                <Typography>{getDisplayBalance(totalStaked)}</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
 
-            <Grid container justify="center">
-              <Box mt={3} style={{ width: '600px' }}>
-                <Alert variant="filled" severity="info">
-                  <h2> Let's Maintain PEG Together! </h2>
-                  <a href="https://app.bomb.money/xbomb">xBOMB</a> is a great place to put your BOMB rewards , 20% of
-                  all minted BOMB goes directly to xBOMB stakers.
-                  <br />
-                  <br />
-                  Please consider putting your earned BOMB into xBOMB, especially when we are not over 1.1 peg.
-                </Alert>
-              </Box>
-            </Grid>
+        <Grid container justify="center">
+          <Box mt={3} style={{ width: '600px' }}>
+            <Alert variant="filled" severity="info">
+              <h2> Let's Maintain PEG Together! </h2>
+              <a href="https://app.bomb.money/xbomb">xBOMB</a> is a great place to put your BOMB rewards , 20% of all
+              minted BOMB goes directly to xBOMB stakers.
+              <br />
+              <br />
+              Please consider putting your earned BOMB into xBOMB, especially when we are not over 1.1 peg.
+            </Alert>
+          </Box>
+        </Grid>
 
         {!!account ? (
-            <Box mt={4}>
-              <StyledBoardroom>
-                <StyledCardsWrapper>
-                  <StyledCardWrapper>
-                    <Harvest />
-                  </StyledCardWrapper>
-                  <Spacer />
-                  <StyledCardWrapper>
-                    <Stake />
-                  </StyledCardWrapper>
-                </StyledCardsWrapper>
-              </StyledBoardroom>
-            </Box>
+          <Box mt={4}>
+            <StyledBoardroom>
+              <StyledCardsWrapper>
+                <StyledCardWrapper>
+                  <Harvest />
+                </StyledCardWrapper>
+                <Spacer />
+                <StyledCardWrapper>
+                  <Stake />
+                </StyledCardWrapper>
+              </StyledCardsWrapper>
+            </StyledBoardroom>
+          </Box>
         ) : (
-            <UnlockWallet />
+          <UnlockWallet />
         )}
 
-            {/* <Grid container justify="center" spacing={3}>
+        {/* <Grid container justify="center" spacing={3}>
             <Grid item xs={4}>
               <Card>
                 <CardContent align="center">
@@ -180,25 +180,25 @@ const Boardroom = () => {
               </Card>
             </Grid>
           </Grid> */}
-          </Box>
+      </Box>
 
-        {!!account && (
-          <Box mt={5}>
-            <Grid container justify="center" spacing={3} mt={10}>
-              <Button
-                disabled={stakedBalance.eq(0) || (!canWithdraw && !canClaimReward)}
-                onClick={onRedeem}
-                className={
-                  stakedBalance.eq(0) || (!canWithdraw && !canClaimReward)
-                    ? 'shinyButtonDisabledSecondary'
-                    : 'shinyButtonSecondary'
-                }
-              >
-                Claim &amp; Withdraw
-              </Button>
-            </Grid>
-          </Box>
-        )}
+      {!!account && (
+        <Box mt={5}>
+          <Grid container justify="center" spacing={3} mt={10}>
+            <Button
+              disabled={stakedBalance.eq(0) || (!canWithdraw && !canClaimReward)}
+              onClick={onRedeem}
+              className={
+                stakedBalance.eq(0) || (!canWithdraw && !canClaimReward)
+                  ? 'shinyButtonDisabledSecondary'
+                  : 'shinyButtonSecondary'
+              }
+            >
+              Claim &amp; Withdraw
+            </Button>
+          </Grid>
+        </Box>
+      )}
     </Page>
   );
 };

@@ -895,6 +895,21 @@ export class BombFinance {
     return realAPR;
   }
 
+  async getBoardroomTVL() {
+    const Boardroom = this.currentBoardroom();
+    const BSHAREPrice = (await this.getShareStat()).priceInDollars;
+    const boardroomtShareBalanceOf = await this.BSHARE.balanceOf(Boardroom.address);
+    const boardroomTVL = Number(getDisplayBalance(boardroomtShareBalanceOf, this.BSHARE.decimal)) * Number(BSHAREPrice);
+    return boardroomTVL;
+  }
+
+  async getBombTVL() {
+    const BOMBPrice = (await this.getBombStat()).priceInDollars;
+    const xBombBombBalanceOf = await this.BOMB.balanceOf(this.XBOMB.address);
+    const bombTVL = Number(getDisplayBalance(xBombBombBalanceOf, this.XBOMB.decimal)) * Number(BOMBPrice);
+    return bombTVL;
+  }
+
   async getBombStakeAPR() {
     const Boardroom = this.currentBoardroom();
     const latestSnapshotIndex = await Boardroom.latestSnapshotIndex();

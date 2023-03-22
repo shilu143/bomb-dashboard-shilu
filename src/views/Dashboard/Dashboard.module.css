@@ -1,0 +1,477 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
+
+#reset-this-root {
+  all: unset;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.fullWidthHR {
+  /* box-sizing: border-box; */
+  border: 0.25px solid #00ade8;
+}
+
+.outerContainer {
+  background-color: #0c1125;
+  /* background-image: url('/public/bg1.svg'), url('/public/bg2.svg');
+  background-repeat: no-repeat;
+  background-size: cover; */
+  background: none;
+  /* width: 100vw;
+  height: 100vh; */
+  /* position: relative; */
+  /* background-position: center; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  font-family: 'Nunito';
+  padding: 2rem 0 2rem 0;
+}
+
+.summaryDiv {
+  margin-bottom: 1.5rem;
+  /* position: absolute; */
+  width: 100%;
+  /* height: 289px; */
+  background-color: rgb(32, 37, 67, 0.5);
+  opacity: 1;
+  border-radius: 5px;
+  padding: 0 3rem;
+}
+
+.summaryTitle {
+  text-align: center;
+  color: white;
+  font-size: 22px;
+  margin: 1rem 0 0.5rem 0;
+}
+
+hr {
+  /* border-color: #c3c5cb;
+	border-width: 0.25px;
+	opacity: 0.5; */
+  border: 0.5px solid rgba(195, 197, 203, 0.75);
+}
+
+.summaryContent {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.summaryContentValue th {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 14px;
+}
+
+.priceColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.summaryContentEpoch {
+  /* background-color: aqua; */
+  padding: 1rem 1rem;
+  margin: 0;
+}
+
+.epochTitle {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.epochVal,
+.nextEpochTime {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.currentEpoch,
+.nextEpoch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nextTwapLive,
+.nextTwapTVL,
+.lastTwap {
+  color: #00e8a2;
+  font-weight: bold;
+}
+
+.TWAPConDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.TWAPConDiv section {
+  /* margin-bottom: 0.25rem;
+  font-weight: 50;
+  color: white; */
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #ffffff;
+}
+
+table {
+  /* border: 1px solid black; */
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  /* border-bottom: 0.5px solid rgba(195, 197, 203, 0.75); */
+}
+tr:last-child td:not(:nth-last-child(n + 5)) {
+  border-bottom: 0.5px solid rgba(195, 197, 203, 0.75);
+}
+tr:last-child th:not(:nth-last-child(n + 5)) {
+  border-bottom: 0.5px solid rgba(195, 197, 203, 0.75);
+}
+
+tr:not(:last-child) td:not(:nth-last-child(n + 6)) {
+  border-bottom: 0.5px solid rgba(195, 197, 203, 0.75);
+}
+
+.tableIcons {
+  height: 32px;
+  width: 32px;
+}
+
+.icontextdiv {
+  display: flex;
+  /* flex-direction:; */
+  align-items: center;
+  justify-content: space-between;
+}
+
+.secondSection {
+  width: 100%;
+  /* height: 500px; */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.newsSection {
+  width: 39%;
+  /* height: 336px; */
+  background-color: rgba(35, 40, 75, 0.75);
+  border: 1px solid #728cdf;
+  border-radius: 10px;
+  padding: 0.2rem 1rem 0.2rem 1rem;
+}
+
+.middleLeftSection {
+  width: 60%;
+  /* height: 336px;
+	background-color: rgba(35, 40, 75, 0.75);
+	border: 1px solid #728cdf;
+	border-radius: 10px; */
+  display: flex;
+  flex-direction: column;
+}
+
+.newsTitle {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30px;
+  /* padding-left: ; */
+}
+
+.readInvestment {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.readInvestment a {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #9ee6ff;
+}
+
+.investButton {
+  width: 100%;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 33px;
+  color: white;
+  background: radial-gradient(
+    59345.13% 4094144349.28% at 39511.5% -2722397851.45%,
+    rgba(0, 245, 171, 0.5) 0%,
+    rgba(0, 173, 232, 0.5) 100%
+  );
+  border: 0.5px solid #e41a1a;
+  margin-bottom: 1rem;
+}
+
+.connectSection {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.connectSection button {
+  height: 40px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #728cdf;
+  backdrop-filter: blur(12.5px);
+  width: 49%;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.connectSection img {
+  height: 24px;
+  width: 24px;
+}
+
+.connectSection span {
+  height: 32px;
+  width: 32px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boardRoom {
+  background-color: rgba(35, 40, 75, 0.75);
+  border: 1px solid #728cdf;
+  border-radius: 10px;
+  height: 100%;
+  padding: 0.75rem;
+  width: 100%;
+}
+
+.boardRoomTitle {
+  font-weight: 700;
+  font-size: 24px;
+  margin: 0;
+}
+
+.boardRoom img {
+  width: 64px;
+  height: 64px;
+}
+
+.recommendedTag {
+  background: rgba(0, 232, 162, 0.5);
+  border-radius: 3px;
+  padding: 0 0.75rem;
+  margin: 0;
+}
+
+.boardroomHeader {
+  display: flex;
+  width: 100%;
+}
+
+.boardroomLogo {
+  width: 10%;
+}
+.boardroomHeaderChild1 {
+  width: 90%;
+  border-bottom: 0.5px solid rgba(195, 197, 203, 0.75);
+}
+
+.boardroomHeaderChild1_1 {
+  display: flex;
+  align-items: center;
+  width: 42%;
+  justify-content: space-between;
+}
+
+.boardroomHeaderChild1_2 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.boardRoomDetails {
+  margin: 0;
+}
+
+.boardroomTVL {
+  margin: 0;
+}
+.boardRoomTotalStake {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.boardRoomTotalStake img {
+  width: 24px;
+  height: 24px;
+}
+
+.boardRoomContent {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+}
+
+.boardRoomButtons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 30%;
+}
+
+.boardRoomDailyReturns,
+.boardRoomYourStake,
+.boardRoomEarned {
+  display: flex;
+  flex-direction: column;
+}
+
+.boardRoomDailyReturnsVal {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+.boardRoomYourStake span,
+.boardRoomEarned span {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+.boardRoomYourStake img,
+.boardRoomEarned img {
+  width: 24px;
+  height: 24px;
+}
+
+.bombFarm,
+.bonds {
+  width: 100%;
+  background-color: rgba(35, 40, 75, 0.75);
+  border: 1px solid #728cdf;
+  border-radius: 10px;
+  /* padding: 0.2rem 1rem 0.2rem 1rem; */
+  margin-bottom: 1rem;
+}
+
+.paddingAdder {
+  padding: 0.2rem 1rem 0.2rem 1rem;
+}
+
+.bombFarmHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bombFarmHeaderChild {
+  display: flex;
+  flex-direction: column;
+}
+
+.bombFarmHeaderChild1 {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.bondsLogo img {
+  width: 48px;
+  height: 48px;
+}
+
+.bondsTitle,
+.bombVl,
+.bombRedeemVl {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.bondsHeader {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+.bombCur,
+.bombRedeem {
+  display: flex;
+  flex-direction: column;
+  /* align-; */
+}
+.bombPrice {
+  margin-bottom: 0.5rem;
+}
+
+.bondContent {
+  display: flex;
+  margin-bottom: 1.5rem;
+  justify-content: space-between;
+}
+
+.bombRedeemVl img {
+  width: 48px;
+  height: 48px;
+}
+
+.bombRedeemVl {
+  display: flex;
+  align-items: center;
+}
+
+.BombPurchaseandRedeem {
+  width: 40%;
+}
+
+.bombPurchaseOption,
+.bombRedeemOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+.msgPr {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+button:hover {
+  border: 1.5px solid #00e8a2;
+  cursor: pointer;
+}

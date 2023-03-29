@@ -33,7 +33,7 @@ const Dashboard: React.FC = () => {
         <div className={styles.secondSection}>
           <div className={styles.middleLeftSection}>
             <div className={styles.readInvestment}>
-              <a href="#">Read Investment Strategy </a>
+              <a href="https://docs.bomb.money/strategies/general-quick-roi-strategy">Read Investment Strategy </a>
             </div>
             <div className={styles.investment}>
               <button type="button" className={styles.investButton}>
@@ -41,13 +41,19 @@ const Dashboard: React.FC = () => {
               </button>
             </div>
             <div className={styles.connectSection}>
-              <button type="button">
+              {/* <button type="button">
+                <span>
+                  <img src="./discord.png" alt="" />
+                </span>
+                Chat on Discord
+              </button> */}
+              <button type="button" onClick={() => (window.location.href = 'http://discord.bomb.money/')}>
                 <span>
                   <img src="./discord.png" alt="" />
                 </span>
                 Chat on Discord
               </button>
-              <button type="button">
+              <button type="button" onClick={() => (window.location.href = 'https://docs.bomb.money/')}>
                 <span>
                   <img src="./docs.png" alt="" />
                 </span>

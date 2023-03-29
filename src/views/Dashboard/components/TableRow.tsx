@@ -36,8 +36,8 @@ const TableRow: React.FunctionComponent<StatProps> = ({
 			<td>{totalSupply}</td>
 			<td>
 				<section className={styles.priceColumn}>
-					<span>${price2}</span>
-					<span>{price1}</span>
+					<span>${price1}</span>
+					<span>{price2}</span>
 				</section>
 			</td>
 			<td>

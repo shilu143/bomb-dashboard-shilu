@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMemo, useCallback } from 'react';
 import styles from '../Dashboard.module.css';
 import useBombStats from '../../../hooks/useBombStats';
@@ -21,12 +21,28 @@ import DataGrid from './DataGrid';
 import useHarvestFromBoardroom from '../../../hooks/useHarvestFromBoardroom';
 import useBank from '../../../hooks/useBank';
 import useStatsForPool from '../../../hooks/useStatsForPool';
+import BombFarmCardUtil from './BombFarmCardUtil';
 
 const BombFarmCard: React.FC = () => {
-  const BombBtcbBankID = 'BombBtcbLPBShareRewardPool';
-  const BombBnbBankID = 'BshareBnbLPBShareRewardPool';
-  const bombBtcBank = useBank(BombBtcbBankID);
-  const bombBnbBank = useBank(BombBnbBankID);
+  // const BombBtcbBankID = 'BombBtcbLPBShareRewardPool';
+  // const BombBnbBankID = 'BshareBnbLPBShareRewardPool';
+  // const bombBtcBank = useBank(BombBtcbBankID);
+  // const bombBnbBank = useBank(BombBnbBankID);
+  const bankIds = ['BombBtcbLPBShareRewardPool', 'BshareBnbLPBShareRewardPool'];
+  let banks = [];
+  // for (let i = 0; i < bankIds.length; i++) {
+  //   banks[i] = useBank(bankIds[i]);
+  // }
+  banks[0] = useBank(bankIds[0]);
+  banks[1] = useBank(bankIds[1]);
+  const imgSrc = ['./bomb-bitcoin-LP.png', './bsharebnblp1@2x.png'];
+
+  // const [banks, setBanks] = useState([]);
+
+  // useEffect(() => {
+  //   const banksData = bankIds.map((id) => useBank(id));
+  //   setBanks(banksData);
+  // }, [bankIds]);
   // console.log(bombBnbBank);
   // console.log(bombBtcBank);
 
@@ -83,8 +99,8 @@ const BombFarmCard: React.FC = () => {
     },
     [bombFinance, addTransaction],
   );
-  let statsOnPoolBTC = useStatsForPool(bombBtcBank);
-  let statsOnPoolBNB = useStatsForPool(bombBnbBank);
+  // let statsOnPoolBTC = useStatsForPool(bombBtcBank);
+  // let statsOnPoolBNB = useStatsForPool(bombBnbBank);
 
   return (
     <div className={styles.bombFarm}>
@@ -99,7 +115,7 @@ const BombFarmCard: React.FC = () => {
           <FuncButton header="Claim All" src="./bomb2.png" propWidth="12%" onc={onReward} />
         </div>
       </div>
-      <div className={styles.paddingAdder}>
+      {/* <div className={styles.paddingAdder}>
         <ContentHeader src="./bsharebnblp1@2x.png" header="BOMB-BTCB" TVL={statsOnPoolBTC?.TVL} />
         <DataGrid
           dailyReturns={bombBtcBank.closedForStaking ? '0.00' : statsOnPoolBTC?.dailyAPR}
@@ -128,7 +144,20 @@ const BombFarmCard: React.FC = () => {
           onc2={onReward}
           onc3={onReward}
         />
-      </div>
+      </div> */}
+
+      {/* {banks.map((bank, index) => {
+        <BombFarmCardUtil bank={bank} />;
+        {
+          index !== banks.length - 1 && <hr className={styles.fullWidthHR} />;
+        }
+      })} */}
+      {banks.map((bank, index) => (
+        <React.Fragment key={index}>
+          <BombFarmCardUtil bank={bank} src={imgSrc[index]} />
+          {index !== banks.length - 1 && <hr className={styles.fullWidthHR} />}
+        </React.Fragment>
+      ))}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import styles from '../Dashboard.module.css';
 import TableRow from './TableRow';
 import useCashPriceInLastTWAP from '../../../hooks/useCashPriceInLastTWAP';
+import useCashPriceInEstimatedTWAP from '../../../hooks/useCashPriceInEstimatedTWAP';
 import useCurrentEpoch from '../../../hooks/useCurrentEpoch';
 import useBombStats from '../../../hooks/useBombStats';
 import useShareStats from '../../../hooks/usebShareStats';
@@ -13,7 +14,8 @@ import useTreasuryAllocationTimes from '../../../hooks/useTreasuryAllocationTime
 import useFetchBombTVL from '../../../hooks/fetchBombTVL';
 
 const SummaryCard: React.FC = () => {
-  const lastTWAP = useCashPriceInLastTWAP();
+  const lastCashPrice = useCashPriceInLastTWAP();
+  const liveCashPrice = useCashPriceInEstimatedTWAP();
   // const {path} = useRouteMatch();
   const currentEpoch = useCurrentEpoch();
 
@@ -52,6 +54,21 @@ const SummaryCard: React.FC = () => {
 
   const { to } = useTreasuryAllocationTimes();
   const bombTVL = useFetchBombTVL();
+  console.log(liveCashPrice);
+  // const liveTWAP = (Number(liveCashPrice) / 100000000000000).toFixed(4);
+  const bondScale = (Number(lastCashPrice) / 100000000000000).toFixed(4);
+
+  const scalingFactor = useMemo(
+    () => (liveCashPrice ? Number(liveCashPrice.priceInDollars).toFixed(4) : null),
+    [liveCashPrice],
+  );
+
+  const tBondPriceInBNB = useMemo(() => (tBondStats ? Number(tBondStats.tokenInFtm).toFixed(4) : null), [tBondStats]);
+  const bombPriceInBNB = useMemo(() => (bombStats ? Number(bombStats.tokenInFtm).toFixed(4) : null), [bombStats]);
+  const bSharePriceInBNB = useMemo(
+    () => (bShareStats ? Number(bShareStats.tokenInFtm).toFixed(4) : null),
+    [bShareStats],
+  );
 
   return (
     <div className={styles.summaryDiv}>
@@ -77,7 +94,7 @@ const SummaryCard: React.FC = () => {
                 currentSupply={bombCirculatingSupply}
                 totalSupply={bombTotalSupply}
                 price1={bombPriceInDollars}
-                price2="1.05 BTCB"
+                price2={`${bombPriceInBNB} BTC`}
                 src2="./metamask-fox.svg"
               />
               <TableRow
@@ -86,7 +103,7 @@ const SummaryCard: React.FC = () => {
                 currentSupply={bShareCirculatingSupply}
                 totalSupply={bShareTotalSupply}
                 price1={bSharePriceInDollars}
-                price2="13000 BTCB"
+                price2={`${bSharePriceInBNB} BNB`}
                 src2="./metamask-fox.svg"
               />
               <TableRow
@@ -95,7 +112,7 @@ const SummaryCard: React.FC = () => {
                 currentSupply={tBondCirculatingSupply}
                 totalSupply={tBondTotalSupply}
                 price1={tBondPriceInDollars}
-                price2="1.15 BTCB"
+                price2={`${tBondPriceInBNB} BTC`}
                 src2="./metamask-fox.svg"
               />
             </tbody>
@@ -117,13 +134,13 @@ const SummaryCard: React.FC = () => {
           <hr />
           <div className={styles.TWAPConDiv}>
             <section>
-              Live TWAP: <span className={styles.nextTwapLive}>1.17</span>
+              Live TWAP: <span className={styles.nextTwapLive}>{scalingFactor}</span>
             </section>
             <section>
               TVL: <span className={styles.nextTwapTVL}>${bombTVL.toFixed(2)}</span>
             </section>
             <section>
-              Last Epoch TWAP: <span className={styles.lastTwap}>{1.22}</span>
+              Last Epoch TWAP: <span className={styles.lastTwap}>{bondScale}</span>
             </section>
           </div>
         </div>

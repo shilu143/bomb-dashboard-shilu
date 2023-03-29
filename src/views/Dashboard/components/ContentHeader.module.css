@@ -1,50 +1,78 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
 
 * {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 .Header {
-	display: flex;
-	width: 100%;
-	margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 .Header img {
-	width: 36px;
-	height: 36px;
+  width: 36px;
+  height: 36px;
 }
 
 .Logo {
-	width: 6%;
-	display: flex;
-	justify-content: center;
+  width: 6%;
+  display: flex;
+  justify-content: center;
 }
 
 .recommendedTag {
-	background: rgba(0, 232, 162, 0.5);
-	border-radius: 3px;
-	padding: 0 0.75rem;
+  background: rgba(0, 232, 162, 0.5);
+  border-radius: 3px;
+  padding: 0 0.75rem;
 }
 
 .Title {
-	font-weight: 700;
-	font-size: 20px;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .HeaderChild {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	border-bottom: 0.5px solid rgb(195, 197, 203, 0.75);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 0.5px solid rgb(195, 197, 203, 0.75);
 }
 
 .HeaderChild_1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 28%;
+}
+
+@media (max-width: 600px) {
+  .Header img {
+    width: 24px;
+    height: 24px;
+  }
+  .Title {
+	font-weight: 600;
+	font-size: 18px;
+  }
+
+  .HeaderChild {
+	display: flex;
+	flex-wrap: wrap;
+  }
+  .Logo {
+	width: 10%;
+	display: flex;
+	justify-content: center;
+  }
+  .HeaderChild_1 {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 28%;
+	/* align-items: center; */
+	width: 100%;
+  }
 }

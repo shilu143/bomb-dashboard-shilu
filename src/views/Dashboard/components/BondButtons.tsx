@@ -1,7 +1,5 @@
 import React from 'react';
 import styles from './FuncButton.module.css';
-import useCatchError from '../../../hooks/useCatchError';
-import useBombFinance from '../../../hooks/useBombFinance';
 import { useWallet } from 'use-wallet';
 import useTokenBalance from '../../../hooks/useTokenBalance';
 import ERC20 from '../../../bomb-finance/ERC20';
@@ -32,10 +30,9 @@ const BondButtons: React.FunctionComponent<Prop> = ({
   disabled = false,
   disabledDescription,
 }) => {
-  const catchError = useCatchError();
-  const {
-    contracts: { Treasury },
-  } = useBombFinance();
+  // const {
+  //   contracts: { Treasury },
+  // } = useBombFinance();
   //   const [approveStatus, approve] = useApprove(fromToken, Treasury.address);
 
   const { account } = useWallet();

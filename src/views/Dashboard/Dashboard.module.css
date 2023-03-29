@@ -32,7 +32,7 @@
   justify-content: space-evenly;
   color: white;
   font-family: 'Nunito';
-  padding: 2rem 0 2rem 0;
+  padding: 0rem 0 2rem 0;
 }
 
 .summaryDiv {
@@ -407,8 +407,8 @@ tr:not(:last-child) td:not(:nth-last-child(n + 6)) {
 }
 
 .bombFarmHeaderChild1 {
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .bondsLogo img {
@@ -419,8 +419,8 @@ tr:not(:last-child) td:not(:nth-last-child(n + 6)) {
 .bondsTitle,
 .bombVl,
 .bombRedeemVl {
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .bondsHeader {
@@ -440,6 +440,7 @@ tr:not(:last-child) td:not(:nth-last-child(n + 6)) {
 
 .bondContent {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 1.5rem;
   justify-content: space-between;
 }
@@ -479,4 +480,204 @@ button:not([disabled]):hover {
 button:disabled {
   opacity: 0.5;
   cursor: default;
+}
+
+@media (max-width: 1000px) {
+  .summaryDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .summaryContent {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  }
+  .secondSection {
+    width: 100%;
+    /* height: 500px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .newsSection {
+    width: 100%;
+    /* height: 336px; */
+    background-color: rgba(35, 40, 75, 0.75);
+    border: 1px solid #728cdf;
+    border-radius: 10px;
+    padding: 0.2rem 1rem 0.2rem 1rem;
+  }
+  .middleLeftSection {
+    width: 100%;
+    /* height: 336px;
+    background-color: rgba(35, 40, 75, 0.75);
+    border: 1px solid #728cdf;
+    border-radius: 10px; */
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  th,
+  td {
+    padding: 0.25rem 0.5rem;
+    text-align: center;
+    /* border-bottom: 0.5px solid rgba(195, 197, 203, 0.75); */
+  }
+
+  .summaryContentValue th {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .summaryContent {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+    font-size: 12px;
+  }
+
+  .summaryDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .summaryContent {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  }
+
+  .boardRoom {
+    background-color: rgba(35, 40, 75, 0.75);
+    border: 1px solid #728cdf;
+    border-radius: 10px;
+    height: 100%;
+    padding: 0.75rem;
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .boardRoomTitle {
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .boardRoom img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .recommendedTag {
+    background: rgba(0, 232, 162, 0.5);
+    border-radius: 3px;
+    padding: 0 0.5rem;
+    margin: 0;
+  }
+
+  .boardroomHeader {
+    display: flex;
+    width: 100%;
+  }
+
+  .boardroomHeaderChild1 {
+    width: 90%;
+    border-bottom: 0.5px solid rgba(195, 197, 203, 0.75);
+  }
+
+  .boardroomHeaderChild1_1 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .boardroomHeaderChild1_2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .boardRoomTotalStake {
+    display: flex;
+    justify-content: center;
+  }
+
+  .boardRoomTotalStake img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .boardRoomContent {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+  }
+
+  .boardRoomButtons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 30%;
+  }
+
+  .boardRoomDailyReturns,
+  .boardRoomYourStake,
+  .boardRoomEarned {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .boardRoomDailyReturnsVal {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .boardRoomYourStake span,
+  .boardRoomEarned span {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .boardRoomYourStake img,
+  .boardRoomEarned img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .bondsLogo img {
+    width: 32px;
+    height: 32px;
+  }
+  .bondContent {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .bombCur,
+  .bombRedeem {
+    margin-bottom: 1.5rem;
+  }
+  .BombPurchaseandRedeem {
+    width: 100%;
+  }
 }

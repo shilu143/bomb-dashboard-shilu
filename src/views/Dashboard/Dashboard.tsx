@@ -41,12 +41,6 @@ const Dashboard: React.FC = () => {
               </button>
             </div>
             <div className={styles.connectSection}>
-              {/* <button type="button">
-                <span>
-                  <img src="./discord.png" alt="" />
-                </span>
-                Chat on Discord
-              </button> */}
               <button type="button" onClick={() => (window.location.href = 'http://discord.bomb.money/')}>
                 <span>
                   <img src="./discord.png" alt="" />

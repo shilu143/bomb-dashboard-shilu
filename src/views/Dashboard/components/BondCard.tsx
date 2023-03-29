@@ -1,14 +1,10 @@
 import React from 'react';
 import { useMemo, useCallback } from 'react';
 import styles from '../Dashboard.module.css';
-import useBombStats from '../../../hooks/useBombStats';
-import useShareStats from '../../../hooks/usebShareStats';
 import useBondStats from '../../../hooks/useBondStats';
 
-import useTreasuryAllocationTimes from '../../../hooks/useTreasuryAllocationTimes';
-import useFetchBombTVL from '../../../hooks/fetchBombTVL';
 import useCashPriceInLastTWAP from '../../../hooks/useCashPriceInLastTWAP';
-import { BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN } from '../../../bomb-finance/constants';
+import { BOND_REDEEM_PRICE_BN } from '../../../bomb-finance/constants';
 import { getDisplayBalance } from '../../../utils/formatBalance';
 import useTokenBalance from '../../../hooks/useTokenBalance';
 import useBondsPurchasable from '../../../hooks/useBondsPurchasable';
@@ -18,33 +14,6 @@ import { useTransactionAdder } from '../../../state/transactions/hooks';
 
 const BondCard: React.FC = () => {
   const bombFinance = useBombFinance();
-
-  //bomb
-  const bombStats = useBombStats();
-
-  //bshare
-  const bShareStats = useShareStats();
-  const bShareCirculatingSupply = useMemo(
-    () => (bShareStats ? String(bShareStats.circulatingSupply) : null),
-    [bShareStats],
-  );
-  const bSharePriceInDollars = useMemo(
-    () => (bShareStats ? Number(bShareStats.priceInDollars).toFixed(2) : null),
-    [bShareStats],
-  );
-  const bShareTotalSupply = useMemo(() => (bShareStats ? String(bShareStats.totalSupply) : null), [bShareStats]);
-
-  //bbond
-  const tBondStats = useBondStats();
-  const tBondTotalSupply = useMemo(() => (tBondStats ? String(tBondStats.totalSupply) : null), [tBondStats]);
-  const tBondCirculatingSupply = useMemo(
-    () => (tBondStats ? String(tBondStats.circulatingSupply) : null),
-    [tBondStats],
-  );
-  const tBondPriceInDollars = useMemo(
-    () => (tBondStats ? Number(tBondStats.priceInDollars).toFixed(2) : null),
-    [tBondStats],
-  );
 
   const bondStat = useBondStats();
   const cashPrice = useCashPriceInLastTWAP();
@@ -106,20 +75,7 @@ const BondCard: React.FC = () => {
                 <p>Purchase BBond</p>
                 {isBondRedeemable ? <p className={styles.msgPr}>Bomb is over peg</p> : null}
               </span>
-              {/* <BondTest
-                    action="Purchase"
-                    fromToken={bombFinance.BOMB}
-                    fromTokenName="BOMB"
-                    toToken={bombFinance.BBOND}
-                    toTokenName="BBOND"
-                    priceDesc={
-                      !isBondPurchasable
-                        ? 'BOMB is over peg'
-                        : getDisplayBalance(bondsPurchasable, 18, 4) + ' BBOND available for purchase'
-                    }
-                    onExchange={handleBuyBonds}
-                    disabled={!bondStat || isBondRedeemable}
-                  /> */}
+
               <BondButtons
                 action="Purchase"
                 fromToken={bombFinance.BOMB}
@@ -134,7 +90,6 @@ const BondCard: React.FC = () => {
                 src="./shop.svg"
                 disabled={!bondStat || isBondRedeemable}
               />
-              {/* <FuncButton header="Purchase" propWidth="20%" src="./shop.svg" onc={onReward} /> */}
             </span>
             <hr />
             <span className={styles.bombRedeemOption}>
@@ -142,20 +97,6 @@ const BondCard: React.FC = () => {
                 <p>Redeem BBond</p>
                 {!isBondRedeemable ? <p className={styles.msgPr}>Bomb is below peg</p> : null}
               </span>
-
-              {/* <BondTest
-                    action="Redeem"
-                    fromToken={bombFinance.BBOND}
-                    fromTokenName="BBOND"
-                    toToken={bombFinance.BOMB}
-                    toTokenName="BOMB"
-                    priceDesc={`${getDisplayBalance(bondBalance)} BBOND Available in wallet`}
-                    onExchange={handleRedeemBonds}
-                    disabled={false}
-                    disabledDescription={
-                      !isBondRedeemable ? `Enabled when 10,000 BOMB > ${BOND_REDEEM_PRICE}BTC` : null
-                    }
-                  /> */}
               <BondButtons
                 action="Redeem"
                 fromToken={bombFinance.BBOND}
@@ -167,7 +108,6 @@ const BondCard: React.FC = () => {
                 disabled={!isBondRedeemable}
                 disabledDescription={!isBondRedeemable ? `Bomb is below peg` : null}
               />
-              {/* <FuncButton header="Redeem" propWidth="20%" src="./down.svg" onc={onReward} /> */}
             </span>
           </div>
         </div>

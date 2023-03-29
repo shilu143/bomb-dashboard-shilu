@@ -1,6 +1,6 @@
-import React, {useMemo} from 'react';
+import React, { useMemo } from 'react';
 import clsx from 'clsx';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   AppBar,
   Box,
@@ -23,11 +23,11 @@ import useShareStats from '../../hooks/usebShareStats';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import {makeStyles, useTheme} from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AccountButton from './AccountButton';
 
 import bombLogo from '../../assets/img/bomb-logo.png';
-import {roundAndFormatNumber} from '../../0x';
+import { roundAndFormatNumber } from '../../0x';
 //import TokenSymbol from '../TokenSymbol';
 
 const useStyles = makeStyles((theme) => ({
@@ -117,20 +117,20 @@ const Nav = () => {
       <Toolbar className={classes.toolbar}>
         {matches ? (
           <>
-            <Typography variant="h6" color="inherit" noWrap style={{flexGrow: '0'}} className={classes.toolbarTitle}>
+            <Typography variant="h6" color="inherit" noWrap style={{ flexGrow: '0' }} className={classes.toolbarTitle}>
               {/* <a className={ classes.brandLink } href="/">Bomb Money</a> */}
               <Link to="/" color="inherit" className={classes.brandLink}>
                 <img alt="bomb.money" src={bombLogo} height="60px" />
               </Link>
             </Typography>
-            <Box style={{paddingLeft: '15px', fontSize: '1rem', flexGrow: '1'}}>
+            <Box style={{ paddingLeft: '15px', fontSize: '1rem', flexGrow: '1' }}>
               <Link to="/" className={'navLink ' + classes.link}>
                 Home
               </Link>
               <Link to="/dashboard" className={'navLink ' + classes.link}>
                 Dashboard
               </Link>
-              <div className={'navDropdownMenu'} style={{"display": "inline", "position": "relative"}}>
+              <div className={'navDropdownMenu'} style={{ display: 'inline', position: 'relative' }}>
                 <span className={'navDropdownMenuRoot navLink ' + classes.link}>Earn</span>
                 <div className={'navDropdownMenuContainer'}>
                   <ul className={'navDropdownMenuWrapper'}>
@@ -151,10 +151,10 @@ const Nav = () => {
                     </li>
                     <li className={'navDropdownMenuItem'}>
                       <a
-                          href="https://bomb.farm"
-                          className={'navLink ' + classes.link}
-                          rel="noopener noreferrer"
-                          //  target="_blank"
+                        href="https://bomb.farm"
+                        className={'navLink ' + classes.link}
+                        rel="noopener noreferrer"
+                        //  target="_blank"
                       >
                         Vaults
                       </a>
@@ -166,11 +166,6 @@ const Nav = () => {
                 Bond
               </Link>
 
-
-              
- 
-              
-
               {/* <Link color="textPrimary" to="/sbs" className={classes.link}>
                 SBS
               </Link>
@@ -180,15 +175,15 @@ const Nav = () => {
               <Link color="textPrimary" to="/regulations" className={classes.link}>
                 Regulations
               </Link> */}
-                      <a
+              <a
                 href="https://bombbtc.com"
                 className={'navLink ' + classes.link}
                 rel="noopener noreferrer"
-              //  target="_blank"
+                //  target="_blank"
               >
                 BTC Staking
               </a>
-                          <a
+              <a
                 href="https://shop.bomb.money"
                 className={'navLink ' + classes.link}
                 rel="noopener noreferrer"
@@ -196,7 +191,7 @@ const Nav = () => {
               >
                 Merch
               </a>
-                               <a
+              <a
                 href="https://vote.bomb.money"
                 className={'navLink ' + classes.link}
                 rel="noopener noreferrer"
@@ -204,7 +199,7 @@ const Nav = () => {
               >
                 Vote
               </a>
-                        <a
+              <a
                 href="https://docs.bomb.money"
                 className={'navLink ' + classes.link}
                 rel="noopener noreferrer"
@@ -249,7 +244,7 @@ const Nav = () => {
             <img
               alt="bomb.money"
               src={bombLogo}
-              style={{height: '40px', marginTop: '-10px', marginLeft: '10px', marginRight: '15px'}}
+              style={{ height: '40px', marginTop: '-10px', marginLeft: '10px', marginRight: '15px' }}
             />
             <AccountButton text="Connect" />
             <Drawer
@@ -279,6 +274,7 @@ const Nav = () => {
                   <AccountButton text="Connect" />
                 </ListItem>
                 <ListItemLink primary="Home" to="/" />
+                <ListItemLink primary="Dashboard" to="/dashboard" />
                 <ListItemLink primary="Farm" to="/farm" />
                 <ListItemLink primary="xBOMB" to="/xbomb" />
                 <ListItemLink primary="Boardroom" to="/boardroom" />
@@ -291,13 +287,13 @@ const Nav = () => {
                 </ListItem>
                 <ListItem button component="a" href="https://bomb.farm">
                   <ListItemText>Vaults</ListItemText>
-                  </ListItem>
-                  <ListItem button component="a" href="https://shop.bomb.money">
+                </ListItem>
+                <ListItem button component="a" href="https://shop.bomb.money">
                   <ListItemText>Merch</ListItemText>
-                  </ListItem>
-                     <ListItem button component="a" href="https://vote.bomb.money">
+                </ListItem>
+                <ListItem button component="a" href="https://vote.bomb.money">
                   <ListItemText>Vote</ListItemText>
-                  </ListItem>
+                </ListItem>
                 <ListItem button component="a" href="https://bombbtc.com">
                   <ListItemText>BTC Staking</ListItemText>
                 </ListItem>

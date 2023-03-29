@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import useModal from '../../hooks/useModal';
@@ -29,6 +29,14 @@ import useCashPriceInLastTWAP from '../../hooks/useCashPriceInLastTWAP';
 import DepositModal from '../Boardroom/components/DepositModal';
 import useFetchBombTVL from '../../hooks/fetchBombTVL';
 import useHarvestFromBoardroom from '../../hooks/useHarvestFromBoardroom';
+import BondTest from './components/bondTest';
+import useBombFinance from '../../hooks/useBombFinance';
+import { getDisplayBalance } from '../../utils/formatBalance';
+import useBondsPurchasable from '../../hooks/useBondsPurchasable';
+import { useTransactionAdder } from '../../state/transactions/hooks';
+import { BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN } from '../../bomb-finance/constants';
+import useTokenBalance from '../../hooks/useTokenBalance';
+import BondButtons from './components/BondButtons';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -80,6 +88,34 @@ const Dashboard: React.FC = () => {
   const mydlrearn = Number(boardRoomEarn) * Number(bombPriceInDollars);
   const bombTVL = useFetchBombTVL();
   const { onReward } = useHarvestFromBoardroom();
+  const bondStat = useBondStats();
+  const cashPrice = useCashPriceInLastTWAP();
+  const isBondRedeemable = useMemo(() => cashPrice.gt(BOND_REDEEM_PRICE_BN), [cashPrice]);
+
+  const bombFinance = useBombFinance();
+  const isBondPurchasable = useMemo(() => Number(bondStat?.tokenInFtm) < 1.01, [bondStat]);
+  const bondsPurchasable = useBondsPurchasable();
+  const addTransaction = useTransactionAdder();
+
+  const handleBuyBonds = useCallback(
+    async (amount: string) => {
+      const tx = await bombFinance.buyBonds(amount);
+      addTransaction(tx, {
+        summary: `Buy ${Number(amount).toFixed(2)} BBOND with ${amount} BOMB`,
+      });
+    },
+    [bombFinance, addTransaction],
+  );
+
+  const handleRedeemBonds = useCallback(
+    async (amount: string) => {
+      const tx = await bombFinance.redeemBonds(amount);
+      addTransaction(tx, { summary: `Redeem ${amount} BBOND` });
+    },
+    [bombFinance, addTransaction],
+  );
+
+  const bondBalance = useTokenBalance(bombFinance?.BBOND);
 
   // const [onPresentDeposit, onDismissDeposit] = useModal(
   //   <DepositModal
@@ -316,29 +352,86 @@ const Dashboard: React.FC = () => {
               <div className={styles.bombCur}>
                 <span className={styles.bombPrice}>Current Price: (Bomb)^2</span>
                 <span className={styles.bombVl}>
-                  BBond = <span>6.2872 BTCB</span>
+                  BBond = <span>{Number(bondStat?.tokenInFtm).toFixed(4) || '-'} BTCB</span>
                 </span>
               </div>
               <div className={styles.bombRedeem}>
-                <span className={styles.bombRedeemTitle}>Available to Redeem:</span>
+                <span className={styles.bombRedeemTitle}>Available to {isBondRedeemable ? 'Redeem' : 'Purchase'}:</span>
                 <span className={styles.bombRedeemVl}>
                   <img src="./bbonds.png" alt="" />
-                  <span>456</span>
+                  <span>
+                    {isBondRedeemable ? getDisplayBalance(bondBalance) : getDisplayBalance(bondsPurchasable, 18, 4)}
+                  </span>
                 </span>
               </div>
               <div className={styles.BombPurchaseandRedeem}>
                 <span className={styles.bombPurchaseOption}>
-                  <span>
+                  <span style={{ opacity: isBondRedeemable ? 0.5 : 1 }}>
                     <p>Purchase BBond</p>
-                    <p className={styles.msgPr}>Bomb is over peg</p>
+                    {isBondRedeemable ? <p className={styles.msgPr}>Bomb is over peg</p> : null}
                   </span>
-
-                  <FuncButton header="Purchase" propWidth="20%" src="./shop.svg" onc={onReward} />
+                  {/* <BondTest
+                    action="Purchase"
+                    fromToken={bombFinance.BOMB}
+                    fromTokenName="BOMB"
+                    toToken={bombFinance.BBOND}
+                    toTokenName="BBOND"
+                    priceDesc={
+                      !isBondPurchasable
+                        ? 'BOMB is over peg'
+                        : getDisplayBalance(bondsPurchasable, 18, 4) + ' BBOND available for purchase'
+                    }
+                    onExchange={handleBuyBonds}
+                    disabled={!bondStat || isBondRedeemable}
+                  /> */}
+                  <BondButtons
+                    action="Purchase"
+                    fromToken={bombFinance.BOMB}
+                    fromTokenName="BOMB"
+                    onExchange={handleBuyBonds}
+                    priceDesc={
+                      !isBondPurchasable
+                        ? 'BOMB is over peg'
+                        : getDisplayBalance(bondsPurchasable, 18, 4) + ' BBOND available for purchase'
+                    }
+                    propWidth="20%"
+                    src="./shop.svg"
+                    disabled={!bondStat || isBondRedeemable}
+                  />
+                  {/* <FuncButton header="Purchase" propWidth="20%" src="./shop.svg" onc={onReward} /> */}
                 </span>
                 <hr />
                 <span className={styles.bombRedeemOption}>
-                  <span>Redeem Bomb</span>
-                  <FuncButton header="Redeem" propWidth="20%" src="./down.svg" onc={onReward} />
+                  <span style={{ opacity: !isBondRedeemable ? 0.5 : 1 }}>
+                    <p>Redeem BBond</p>
+                    {!isBondRedeemable ? <p className={styles.msgPr}>Bomb is below peg</p> : null}
+                  </span>
+
+                  {/* <BondTest
+                    action="Redeem"
+                    fromToken={bombFinance.BBOND}
+                    fromTokenName="BBOND"
+                    toToken={bombFinance.BOMB}
+                    toTokenName="BOMB"
+                    priceDesc={`${getDisplayBalance(bondBalance)} BBOND Available in wallet`}
+                    onExchange={handleRedeemBonds}
+                    disabled={false}
+                    disabledDescription={
+                      !isBondRedeemable ? `Enabled when 10,000 BOMB > ${BOND_REDEEM_PRICE}BTC` : null
+                    }
+                  /> */}
+                  <BondButtons
+                    action="Redeem"
+                    fromToken={bombFinance.BBOND}
+                    fromTokenName="BBOND"
+                    onExchange={handleRedeemBonds}
+                    priceDesc={`${getDisplayBalance(bondBalance)} BBOND Available in wallet`}
+                    propWidth="20%"
+                    src="./down.svg"
+                    disabled={!isBondRedeemable}
+                    disabledDescription={!isBondRedeemable ? `Bomb is below peg` : null}
+                  />
+                  {/* <FuncButton header="Redeem" propWidth="20%" src="./down.svg" onc={onReward} /> */}
                 </span>
               </div>
             </div>

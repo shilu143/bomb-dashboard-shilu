@@ -471,7 +471,12 @@ tr:not(:last-child) td:not(:nth-last-child(n + 6)) {
   line-height: 22px;
 }
 
-button:hover {
+button:not([disabled]):hover {
   border: 1.5px solid #00e8a2;
   cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
 }

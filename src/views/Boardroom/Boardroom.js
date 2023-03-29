@@ -186,7 +186,7 @@ const Boardroom = () => {
         <Box mt={5}>
           <Grid container justify="center" spacing={3} mt={10}>
             <Button
-              disabled={stakedBalance.eq(0) || (!canWithdraw && !canClaimReward)}
+              disabled={false}
               onClick={onRedeem}
               className={
                 stakedBalance.eq(0) || (!canWithdraw && !canClaimReward)

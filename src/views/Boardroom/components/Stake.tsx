@@ -88,7 +88,7 @@ const Stake: React.FC = () => {
               <Label text={'BSHARE Staked'} variant="yellow" />
             </StyledCardHeader>
             <StyledCardActions>
-              {approveStatus !== ApprovalState.APPROVED ? (
+              {false ? (
                 <Button
                   disabled={approveStatus !== ApprovalState.NOT_APPROVED}
                   className={approveStatus === ApprovalState.NOT_APPROVED ? 'shinyButton' : 'shinyButtonDisabled'}

@@ -12,6 +12,9 @@ interface Props {
   onc1: () => void;
   onc2: () => void;
   onc3: () => void;
+  disable1?: boolean;
+  disable2?: boolean;
+  disable3?: boolean;
 }
 
 const DataGrid: React.FunctionComponent<Props> = ({
@@ -24,6 +27,9 @@ const DataGrid: React.FunctionComponent<Props> = ({
   onc1,
   onc2,
   onc3,
+  disable1 = false,
+  disable2 = false,
+  disable3 = false,
 }) => {
   return (
     <div className={styles.outerContainer}>
@@ -46,19 +52,30 @@ const DataGrid: React.FunctionComponent<Props> = ({
         </span>
         <span>&#8776;{earnedDlr}</span>
       </div>
-      {isBoardFarms ? (
-        <div className={styles.Buttons1}>
-          <FuncButton header="Deposit" src="./up.svg" propWidth="30%" onc={onc1} />
-          <FuncButton header="Withdraw" src="./down.svg" propWidth="30%" onc={onc2} />
-          <FuncButton header="Claim Rewards" src="./bomb2.png" propWidth="30%" onc={onc3} />
-        </div>
-      ) : (
-        <div className={styles.Buttons2}>
-          <FuncButton header="Deposit" src="./up.svg" propWidth="45%" onc={onc1} />
-          <FuncButton header="Withdraw" src="./down.svg" propWidth="45%" onc={onc2} />
-          <FuncButton header="Claim Rewards" src="./bomb2.png" propWidth="90%" onc={onc3} />
-        </div>
-      )}
+
+      <div className={styles.Buttons1}>
+        <FuncButton
+          header="Deposit"
+          src="./up.svg"
+          propWidth={isBoardFarms ? '30%' : '48%'}
+          onc={onc1}
+          isdisabled={disable1}
+        />
+        <FuncButton
+          header="Withdraw"
+          src="./down.svg"
+          propWidth={isBoardFarms ? '30%' : '48%'}
+          onc={onc2}
+          isdisabled={disable2}
+        />
+        <FuncButton
+          header="Claim Rewards"
+          src="./bomb2.png"
+          propWidth={isBoardFarms ? '30%' : '100%'}
+          onc={onc3}
+          isdisabled={disable3}
+        />
+      </div>
     </div>
   );
 };

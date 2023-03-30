@@ -13,6 +13,21 @@ import moment from 'moment';
 import useTreasuryAllocationTimes from '../../../hooks/useTreasuryAllocationTimes';
 import useFetchBombTVL from '../../../hooks/fetchBombTVL';
 
+function formatNumber(numStr: string): string {
+  const num = parseFloat(numStr);
+  if (!isNaN(num)) {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(2) + 'M';
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(2) + 'K';
+    } else {
+      return num.toString();
+    }
+  } else {
+    return 'NAN';
+  }
+}
+
 const SummaryCard: React.FC = () => {
   const lastCashPrice = useCashPriceInLastTWAP();
   const liveCashPrice = useCashPriceInEstimatedTWAP();
@@ -91,8 +106,8 @@ const SummaryCard: React.FC = () => {
               <TableRow
                 src1="./bomb1.png"
                 crp="$BOMB"
-                currentSupply={bombCirculatingSupply}
-                totalSupply={bombTotalSupply}
+                currentSupply={formatNumber(bombCirculatingSupply)}
+                totalSupply={formatNumber(bombTotalSupply)}
                 price1={bombPriceInDollars}
                 price2={`${bombPriceInBNB} BTC`}
                 src2="./metamask-fox.svg"
@@ -100,8 +115,8 @@ const SummaryCard: React.FC = () => {
               <TableRow
                 src1="./bomb2.png"
                 crp="$BSHARE"
-                currentSupply={bShareCirculatingSupply}
-                totalSupply={bShareTotalSupply}
+                currentSupply={formatNumber(bShareCirculatingSupply)}
+                totalSupply={formatNumber(bShareTotalSupply)}
                 price1={bSharePriceInDollars}
                 price2={`${bSharePriceInBNB} BNB`}
                 src2="./metamask-fox.svg"
@@ -109,8 +124,8 @@ const SummaryCard: React.FC = () => {
               <TableRow
                 src1="./bbonds.png"
                 crp="$BBOND"
-                currentSupply={tBondCirculatingSupply}
-                totalSupply={tBondTotalSupply}
+                currentSupply={formatNumber(tBondCirculatingSupply)}
+                totalSupply={formatNumber(tBondTotalSupply)}
                 price1={tBondPriceInDollars}
                 price2={`${tBondPriceInBNB} BTC`}
                 src2="./metamask-fox.svg"

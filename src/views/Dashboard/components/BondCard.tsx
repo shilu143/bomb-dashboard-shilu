@@ -88,7 +88,7 @@ const BondCard: React.FC = () => {
                 }
                 propWidth="20%"
                 src="./shop.svg"
-                disabled={!bondStat || isBondRedeemable}
+                disabled={isBondRedeemable}
               />
             </span>
             <hr />
